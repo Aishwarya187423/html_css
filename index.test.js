@@ -21,4 +21,4 @@ test('Check if Aishwarya is displayed in the HTML', () => {
     const computedStyles = nameContainer.style;
     expect(computedStyles.color).toBe('');
     expect(computedStyles.backgroundColor).toBe('');
-});
+});  
