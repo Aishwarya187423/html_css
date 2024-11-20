@@ -25,5 +25,8 @@ jobs:
       - name: Fix Jest permissions
         run: chmod +x ./node_modules/.bin/jest
 
+      - name: Reinstall Jest (resolve missing modules)
+        run: npm install --save-dev jest
+
       - name: Run tests
         run: npm test
