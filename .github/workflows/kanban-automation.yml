@@ -1,0 +1,25 @@
+name: Move Issues on Kanban
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  move-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Move issues based on commit messages
+    - name: Move Issues on Kanban
+      uses: alex-page/github-project-automation-plus@v0.6.0
+      with:
+        project: "GitHub Actions Kanban"
+        column-to-add: |
+          Ready: To Do
+          In Progress: In Progress
+          Done: Done
