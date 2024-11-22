@@ -21,7 +21,7 @@ jobs:
         GH_TOKEN: ${{ secrets.aish }}
 
     - name: Debug Project Information
-      run: gh project view 5 --format json
+      run: gh project view 5 --format json --owner @Aishwarya187423
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
