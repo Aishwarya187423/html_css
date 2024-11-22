@@ -1,28 +1,27 @@
-name: Kanban Automation
+name: Move Issues on Kanban Based on Comments
 
 on:
-  issues:
+  issue_comment:
     types:
-      - opened
-      - edited
-  pull_request:
-    types:
-      - opened
-      - edited
-      - closed
+      - created
 
 jobs:
   move-issues:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Move Issues on Kanban
-        uses: alex-page/github-project-automation-plus@v0.6.0
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          project: GitHub Actions Kanban
-          action: update
-          column: |
-            Ready: To Do
-            In Progress: In Progress
-            Done: Done
+    # Step 1: Check out the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Move issues based on comment content
+    - name: Move Issues on Kanban
+      uses: alex-page/github-project-automation-plus@v0.6.0
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        project: "GitHub Actions Kanban"
+        column: |
+          Ready: To Do
+          In Progress: In Progress
+          Done: Done
+        action: update
