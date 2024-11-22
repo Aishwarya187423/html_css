@@ -20,11 +20,17 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
+    - name: Debug Project Information
+      run: gh project view "PVT_kwHOCtxenM4As1ms" --json name,columns
+      env:
+        GH_TOKEN: ${{ secrets.aish }}
+
+
     # Step 3: Move issues based on comment content
     - name: Move Issues on Kanban
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.aish }}
-        project: "@Aishwarya187423's Testing kanban"
+        project: "PVT_kwHOCtxenM4As1ms"
         column: "Done"
         action: update
