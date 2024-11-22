@@ -18,7 +18,7 @@ jobs:
     - name: Move Issues on Kanban
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.New_token_testing }}
         project: "GitHub Actions Kanban"
         column: |
           Ready: To Do
