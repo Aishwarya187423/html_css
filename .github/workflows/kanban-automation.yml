@@ -31,6 +31,6 @@ jobs:
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.aish }}
-        project: "PVT_kwHOCtxenM4As1ms"
+        project: 5
         column: "Done"
         action: update
