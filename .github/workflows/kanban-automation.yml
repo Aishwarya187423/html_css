@@ -20,17 +20,18 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
-    - name: Debug Project Information
-      run: gh project view 5 --format json --owner Aishwarya187423 | jq '.columns'
+    # Step 3: Debug Project Information and Fetch Columns
+    - name: Debug Project Information and Columns
+      run: |
+        gh project view PVT_kwHOCtxenM4As1ms --format json --owner Aishwarya187423 | jq '.columns'
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
-
-    # Step 3: Move issues based on comment content
+    # Step 4: Move issues based on comment content
     - name: Move Issues on Kanban
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.aish }}
-        project: 5
-        column: "Done"
+        project: "PVT_kwHOCtxenM4As1ms" # Use full project ID
+        column: "Done" # Ensure this matches exactly with the column name
         action: update
