@@ -19,7 +19,7 @@ jobs:
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.New_token_testing }}
-        project: "GitHub Actions Kanban"
+        project: "Testing kanban"
         column: |
           Ready: To Do
           In Progress: In Progress
