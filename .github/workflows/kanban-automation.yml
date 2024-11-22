@@ -21,7 +21,7 @@ jobs:
         GH_TOKEN: ${{ secrets.aish }}
 
     - name: Debug Project Information
-      run: gh project view 5 --format json --owner Aishwarya187423
+      run: gh project view 5 --format json --owner Aishwarya187423, columns
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
@@ -31,6 +31,6 @@ jobs:
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.aish }}
-        project: "@Aishwarya187423's Testing kanban"
+        project: 5
         column: "Done"
         action: update
