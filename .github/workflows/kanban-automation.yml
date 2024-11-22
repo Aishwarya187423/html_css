@@ -25,6 +25,6 @@ jobs:
       uses: alex-page/github-project-automation-plus@v0.6.0
       with:
         repo-token: ${{ secrets.New_token_testing }}
-        project: "Testing kanban"
+        project: "@Aishwarya187423's Testing kanban"
         column: "Done"
         action: update
