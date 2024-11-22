@@ -21,7 +21,7 @@ jobs:
         GH_TOKEN: ${{ secrets.aish }}
 
     - name: Debug Project Information
-      run: gh project view "PVT_kwHOCtxenM4As1ms" --format json
+      run: gh project view 5 --format json
       env:
         GH_TOKEN: ${{ secrets.aish }}
 
