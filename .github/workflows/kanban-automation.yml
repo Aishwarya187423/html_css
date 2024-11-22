@@ -12,36 +12,38 @@ jobs:
     # Step 1: Check out the code
     - name: Checkout code
       uses: actions/checkout@v3
+    
     # Step 2: List all projects for debugging
     - name: List projects
       run: gh project list
       env:
         GH_TOKEN: ${{ secrets.token_kanban }}
+    
     - name: Debug Project Information
-      run: gh project view 13 --format json --owner "@me" | jq -r '.[]'
+      run: gh project view PVT_kwHOCtxenM4As1ms --format json | jq -r '.fields.nodes[] | {name}'
       env:
         GH_TOKEN: ${{ secrets.token_kanban }}
- 
+    
     # Step 3: Move issues based on comment content (Done)
-    - name: Move Issues on Kanban
+    - name: Move Issues to Done
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'Done') }}
       with:
          gh_token: ${{ secrets.token_kanban }}
-         project_id: 5
+         project_id: PVT_kwHOCtxenM4As1ms
          user: 'Aishwarya187423'
-         resource_node_id: ${{ github.event.issue.node_id }}  # Use the node_id from the issue
+         resource_node_id: ${{ github.event.issue.node_id }}
          move_related_issues: true
-         status_value: 'Done' # Target status
-         
-     # Step 4: Move issues based on comment content (In Progress)
-    - name: Move Issues on Kanban
+         status_value: 'Done'
+
+    # Step 4: Move issues based on comment content (In Progress)
+    - name: Move Issues to In Progress
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'In progress') }}
       with:
          gh_token: ${{ secrets.token_kanban }}
-         project_id: 13
-         user: 'Siddhartha-atu'
-         resource_node_id: ${{ github.event.issue.node_id }}  # Use the node_id from the issue
+         project_id: PVT_kwHOCtxenM4As1ms
+         user: 'Aishwarya187423'
+         resource_node_id: ${{ github.event.issue.node_id }}
          move_related_issues: true
-         status_value: 'In progress' # Target status
+         status_value: 'In Progress'
