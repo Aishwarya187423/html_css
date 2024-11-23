@@ -20,9 +20,11 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Step 3: Debug Project Information
-    - name: Debug Project and Columns
-      run: gh project view PVT_kwHOCtxenM4As1ms --format json --owner "@me" | jq
+    # Step 3: Fetch Project Details
+    - name: Fetch Project Columns
+      id: fetch_project
+      run: |
+        gh project view PVT_kwHOCtxenM4As1ms --format json --owner "@me" | jq
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
