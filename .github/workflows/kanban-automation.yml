@@ -33,11 +33,11 @@ jobs:
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'Done') }}
       with:
         gh_token: ${{ secrets.GITHUB_TOKEN }}
-        project_id: "PVT_kwHOCtxenM4As1ms" # Full project ID
+        project_id: "PVT_kwHOCtxenM4As1ms"
         user: '@me'
         resource_node_id: ${{ github.event.issue.node_id }}
         move_related_issues: true
-        status_value: "Done" # Matches the column name on your board
+        status_value: "Done"
 
     # Step 5: Move issues based on comment content (In Progress)
     - name: Move Issues to 'In Progress'
@@ -45,8 +45,8 @@ jobs:
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'In progress') }}
       with:
         gh_token: ${{ secrets.GITHUB_TOKEN }}
-        project_id: "PVT_kwHOCtxenM4As1ms" # Full project ID
+        project_id: "PVT_kwHOCtxenM4As1ms"
         user: '@me'
         resource_node_id: ${{ github.event.issue.node_id }}
         move_related_issues: true
-        status_value: "In Progress" # Matches the column name on your board
+        status_value: "In Progress"
