@@ -18,23 +18,23 @@ jobs:
     - name: List projects
       run: gh project list
       env:
-        GH_TOKEN: ${{ secrets.aish }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # Step 3: Debug Project Information and Fetch Columns
     - name: Debug Project Information and Columns
       run: |
         gh project view PVT_kwHOCtxenM4As1ms --format json --owner "@me" | jq -r '.columns'
       env:
-        GH_TOKEN: ${{ secrets.aish }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # Step 4: Move issues based on comment content (Done)
     - name: Move Issues to 'Done'
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'Done') }}
       with:
-        gh_token: ${{ secrets.aish }}
+        gh_token: ${{ secrets.GITHUB_TOKEN }}
         project_id: "PVT_kwHOCtxenM4As1ms" # Full project ID
-        user: '@me' # Replace with your username or keep '@me' for personal projects
+        user: '@me'
         resource_node_id: ${{ github.event.issue.node_id }}
         move_related_issues: true
         status_value: "Done" # Matches the column name on your board
@@ -44,9 +44,9 @@ jobs:
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
       if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' && contains(github.event.comment.body, 'In progress') }}
       with:
-        gh_token: ${{ secrets.aish }}
+        gh_token: ${{ secrets.GITHUB_TOKEN }}
         project_id: "PVT_kwHOCtxenM4As1ms" # Full project ID
-        user: '@me' # Replace with your username or keep '@me'
+        user: '@me'
         resource_node_id: ${{ github.event.issue.node_id }}
         move_related_issues: true
         status_value: "In Progress" # Matches the column name on your board
