@@ -29,7 +29,7 @@ jobs:
     # Step 4: Move issues based on comment content (Done)
     - name: Move Issues to 'Done'
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
-      if: ${{ github.event.comment.body contains 'Done' }}
+      if: ${{ github.event.comment.body && contains(github.event.comment.body, 'Done') }}
       with:
         gh_token: ${{ secrets.GITHUB_TOKEN }}
         project_id: "PVT_kwHOCtxenM4As1ms"
@@ -42,7 +42,7 @@ jobs:
     # Step 5: Move issues based on comment content (In Progress)
     - name: Move Issues to 'In Progress'
       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
-      if: ${{ github.event.comment.body contains 'In progress' }}
+      if: ${{ github.event.comment.body && contains(github.event.comment.body, 'In progress') }}
       with:
         gh_token: ${{ secrets.GITHUB_TOKEN }}
         project_id: "PVT_kwHOCtxenM4As1ms"
